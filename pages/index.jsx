@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import Img from 'next/image';
 import { createClient } from "next-sanity";
-import { useNextSanityImage } from 'next-sanity-image';
 
+import { Image } from "../components/Image";
 
 export default function IndexPage({ pages }) {
     console.log(pages);
@@ -18,11 +17,7 @@ export default function IndexPage({ pages }) {
           {pages.map((page) => (
             <li key={page._id}>
                 {page?.title}
-                <Img
-                    {...useNextSanityImage(client, page.poster)}
-                    style={{ maxWidth: '100%', height: 'auto' }} // layout="intrinsic" prior to Next 13.0.0
-                    alt="jonah"
-                />  
+                <Image client={client} image={page.poster} />
             </li>
           ))}
         </ul>
