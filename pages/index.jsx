@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import Img from 'next/image';
 import { createClient } from "next-sanity";
 import { useNextSanityImage } from 'next-sanity-image';
+
 
 export default function IndexPage({ pages }) {
     console.log(pages);
