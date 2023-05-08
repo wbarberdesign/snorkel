@@ -7,7 +7,7 @@ export default function IndexPage({ pages }) {
   return (
     <>
     <header>
-      <h1>Sanity + Next.js</h1>
+      <h1>test</h1>
     </header>
     <main>
       <h2>Pages</h2>
@@ -19,6 +19,7 @@ export default function IndexPage({ pages }) {
                 <Img
                     {...useNextSanityImage(client, page.poster)}
                     style={{ maxWidth: '100%', height: 'auto' }} // layout="intrinsic" prior to Next 13.0.0
+                    alt="jonah"
                 />  
             </li>
           ))}
