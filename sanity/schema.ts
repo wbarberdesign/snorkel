@@ -1,5 +1,8 @@
 import { SchemaTypeDefinition } from 'sanity'
 
+import { imageBlock } from './components/ImageBlocks';
+
+
 export const schema: { types: SchemaTypeDefinition[] } = {
     types: [
         {
@@ -85,8 +88,31 @@ export const schema: { types: SchemaTypeDefinition[] } = {
                 title: "Button Text",
                 name: "buttonText",
                 type: "string"
-              }
-            ]
-          }  
-      ]
+              },
+              {
+                title: "Secondary Title",
+                name: "secondaryTitle",
+                type: "string"
+              },
+              {
+                title: 'Secondary Content', 
+                name: 'secondaryContent',
+                type: 'array', 
+                of: [{type: 'block'}]
+              },
+              {
+                title: "Secondary Button Text",
+                name: "secondaryButtonText",
+                type: "string"
+              },
+              {
+                name: 'imageBlocks',
+                type: 'array',
+                title: 'Image Blocks',
+                of: [{ type: 'imageBlock' }],
+              },
+            ],
+          },
+          imageBlock
+      ],
 }
