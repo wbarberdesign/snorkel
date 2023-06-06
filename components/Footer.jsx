@@ -3,7 +3,9 @@ import Link from 'next/link'
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-center flex-column flex-middle pd-y--l gap--s">
+    <footer 
+    className="flex flex-center flex-column flex-middle pd-y--l gap--s" 
+    id="contact-us">
         <h2 className="body">Contact us</h2>
         <Link href="tel:(+64) 22 030 2511" target="_blank">(+64) 22 030 2511</Link>
         <Link href="mailto:info@rakiuradive.co.nz" target="_blank">info@rakiuradive.co.nz</Link>

@@ -2,6 +2,7 @@ import { SchemaTypeDefinition } from 'sanity'
 
 import { imageBlock } from './components/ImageBlocks';
 import { tourDetails } from './components/tourDetails';
+import { galleryBlock } from './components/galleryBlocks';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
     types: [
@@ -152,6 +153,24 @@ export const schema: { types: SchemaTypeDefinition[] } = {
                 },
             ]
             },
-          imageBlock, tourDetails
+            {
+                title: "Gallery",
+                name: "gallery",
+                type: "document",
+                fields: [
+                    {
+                        title: "Title",
+                        name: "title",
+                        type: "string"
+                    },
+                    {
+                        name: 'galleryBlocks',
+                        type: 'array',
+                        title: 'Gallery Blocks',
+                        of: [{ type: 'galleryBlock' }],
+                    }
+                ]
+                },
+          imageBlock, tourDetails, galleryBlock
       ],
 }

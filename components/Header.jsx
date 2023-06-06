@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-export const Header = ({lightMode}) => {
+export const Header = ({toggleLightMode}) => {
     const router = useRouter();
-    const [menuOpen, toggleMenuOpen] = useState(false)
+    const [menuOpen, toggleMenuOpen] = useState(false);
     return (
         <>
         <header className="pd-x--s gc relative">
@@ -30,10 +30,9 @@ export const Header = ({lightMode}) => {
                     <ul className="flex flex-r m-flex-column flex-middle gap--s">
                         <li><Link href="/tours" className={router.pathname == '/tours' ? 'active' : ''}>Tours</Link></li>
                         <li><Link href="/gallery" className={router.pathname == '/gallery' ? 'active' : ''}>Gallery</Link></li>
-                        <li><a href="/tours">Tours</a></li>
-                        <li><a href="/tours">Tours</a></li>
+                        <li><Link href="#contact-us" className={router.hash == 'contact-us' ? 'active' : ''}>Contact us</Link></li>
                         <li>
-                        <input type="checkbox" name="lightMode" id="lightMode" onChange={(e) => lightMode(e)}/>
+                        <input type="checkbox" name="lightMode" id="lightMode" onChange={(e) => toggleLightMode(e)}/>
                         </li>
                     </ul>
                 </nav>

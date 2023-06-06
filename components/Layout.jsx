@@ -1,13 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { motion } from "framer-motion";
 import { Header } from './Header';
 import { Footer } from './Footer';
-Footer
 
-export const Layout = ({children, lightMode}) => {
+export const Layout = ({children}) => {
+    const [lightMode, toggleLightMode] = useState(false);
   return (
     <main className={`dive-rakiura ${lightMode ? 'light-mode' : ''}`}>
-        <Header lightMode={(e) => toggleLightMode(!lightMode)}/>
+        <Header toggleLightMode={(e) => toggleLightMode(!lightMode)}/>
             <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

@@ -63,7 +63,7 @@ export default function IndexPage({ home }) {
                     </div>
                     <div className="d-7-13 m-1-13 gc-2-col m-gc-1-col col-gap--s">
                         {data.imageBlocks.map((block, i) => (
-                            <Link className="flex flex-column" key={i} href={`/gallery?filter=${block.caption}`}>
+                            <Link className="flex flex-column" key={i} href={`/gallery?filter=${block.caption.toLowerCase().replace(" ", "-")}`}>
                                 <Image client={client} image={block.image} ratio="3-2" />
                                 <button className="btn-2 mg-y--s m-mg-x--s">{block.caption}</button>
                             </Link>
