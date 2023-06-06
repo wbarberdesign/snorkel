@@ -1,13 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
 export const Header = ({lightMode}) => {
     const router = useRouter();
-console.log(router);
+    const [menuOpen, toggleMenuOpen] = useState(false)
     return (
-        <header className="pd--s gc">
-            <div className="d-1-6">
+        <>
+        <header className="pd-x--s gc relative">
+            <div className="d-1-6 r-1 m-1-13 h-100 flex m-flex-center flex-middle">
                 <Link href="/">
                     <svg width="263" height="28" viewBox="0 0 263 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.592 14.184C17.592 17.64 17.268 20.844 15.828 23.148C14.388 25.488 11.688 27 7.69201 27H0.0960083V1.47598H7.69201C11.688 1.47598 14.424 3.09599 15.864 5.43599C17.304 7.73999 17.592 10.728 17.592 14.184ZM14.316 14.184C14.316 10.908 14.172 7.91999 12.408 6.11999C11.436 5.11199 9.88801 4.42799 7.69201 4.42799H3.30001V24.048H7.69201C9.99601 24.048 11.544 23.292 12.516 22.248C14.208 20.412 14.316 17.352 14.316 14.184Z" fill="white"/>
@@ -24,17 +25,48 @@ console.log(router);
                     </svg>
                 </Link>
             </div>
-            <nav className="d-7-13 flex flex-middle">
-                <ul className="flex flex-r flex-middle gap--s">
-                    <li><a href="/tours">Tours</a></li>
-                    <li><Link href="/gallery" className={router.pathname == '/gallery' ? 'active' : ''}>Gallery</Link></li>
-                    <li><a href="/tours">Tours</a></li>
-                    <li><a href="/tours">Tours</a></li>
-                    <li>
-                    <input type="checkbox" name="lightMode" id="lightMode" onChange={(e) => lightMode(e)}/>
-                    </li>
-                </ul>
-            </nav>
+            <div className="d-7-13 m-1-13 tablet-plus r-1">
+                <nav className="flex flex-middle h-100">
+                    <ul className="flex flex-r m-flex-column flex-middle gap--s">
+                        <li><Link href="/tours" className={router.pathname == '/tours' ? 'active' : ''}>Tours</Link></li>
+                        <li><Link href="/gallery" className={router.pathname == '/gallery' ? 'active' : ''}>Gallery</Link></li>
+                        <li><a href="/tours">Tours</a></li>
+                        <li><a href="/tours">Tours</a></li>
+                        <li>
+                        <input type="checkbox" name="lightMode" id="lightMode" onChange={(e) => lightMode(e)}/>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div className="mobile-only r-1">
+            <div className="absolute top left h-100">
+                <div 
+                className="h-100 pd-x--s flex flex-center flex-middle"
+                onClick={(e) => toggleMenuOpen(!menuOpen)}>
+                    {menuOpen ? 'Close' : 'Menu'}
+                </div>
+            </div>
+            <div className={`mobileNav pd--s ${menuOpen ? 'active' : ''}`}>
+                <p className="small mg-bottom--m">Menu</p>
+                <div className="flex flex-column gap--m">
+                    <div className="flex flex-column gap--s">
+                        <p>Tours</p>
+                        <ul>
+                            <li><Link href="/tours#tour-information">Tour Information</Link></li>
+                            <li><Link href="/tours#what-we-provide">What we provide</Link></li>
+                        </ul>
+                    </div>
+                    <div className="flex flex-column gap--s">
+                        <p>Gallery</p>
+                        <ul>
+                            <li><Link href="/gallery?filter=fin-fish">Fin-fish</Link></li>
+                            <li><Link href="/gallery?filter=reef-life">Reef life</Link></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </div>
         </header>
+        </>
     )
 }

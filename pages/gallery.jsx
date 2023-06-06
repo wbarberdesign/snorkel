@@ -6,6 +6,7 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { useState } from "react";
 import { GalleryFilter } from "../components/GalleryFilter";
+import { Layout } from "../components/Layout";
 
 export default function IndexPage({ home }) {
     const data = home[0];
@@ -14,18 +15,20 @@ export default function IndexPage({ home }) {
     if(!data) { return(<></>)}
 
     return (
-        <div className={`dive-rakiura ${lightMode ? 'light-mode' : ''}`}>
-        <Header lightMode={(e) => toggleLightMode(!lightMode)}/>
-        <main>
-            <section className="gc full-height">
-                <div className="d-1-13 pd--s pd-top--m flex gap--s flex-column">
-                    <h1 className="small">Gallery</h1>
-                    <GalleryFilter />
-                </div>
-            </section>
-            <Footer />
-        </main>
-    </div>
+        <Layout>
+            <div className={`dive-rakiura ${lightMode ? 'light-mode' : ''}`}>
+            <Header lightMode={(e) => toggleLightMode(!lightMode)}/>
+            <main>
+                <section className="gc full-height">
+                    <div className="d-1-13 pd--s pd-top--m flex gap--s flex-column">
+                        <h1 className="small">Gallery</h1>
+                        <GalleryFilter />
+                    </div>
+                </section>
+                <Footer />
+            </main>
+        </div>
+    </Layout>
     )
 }
 

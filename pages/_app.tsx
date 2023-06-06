@@ -1,5 +1,6 @@
 import { IBM_Plex_Mono, Inter, PT_Serif } from '@next/font/google'
 import { AppProps } from 'next/app'
+import { AnimatePresence } from 'framer-motion'
 
 const mono = IBM_Plex_Mono({
   variable: '--font-mono',
@@ -23,7 +24,7 @@ const serif = PT_Serif({
 
 import 'styles/main.scss';
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps, router }: AppProps) {
   return (
     <>
       <style jsx global>
@@ -35,8 +36,9 @@ export default function App({ Component, pageProps }: AppProps) {
           }
         `}
       </style>
-
-      <Component {...pageProps} />
+      <AnimatePresence mode="wait" initial={false}>
+        <Component {...pageProps} />
+    </AnimatePresence>
     </>
   )
 }

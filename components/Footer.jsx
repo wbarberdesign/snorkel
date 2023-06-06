@@ -4,7 +4,7 @@ import Link from 'next/link'
 export const Footer = () => {
   return (
     <footer className="flex flex-center flex-column flex-middle pd-y--l gap--s">
-        <h2 class="body">Contact us</h2>
+        <h2 className="body">Contact us</h2>
         <Link href="tel:(+64) 22 030 2511" target="_blank">(+64) 22 030 2511</Link>
         <Link href="mailto:info@rakiuradive.co.nz" target="_blank">info@rakiuradive.co.nz</Link>
         <div className="flex flex-r gap--s flex-middle">
@@ -15,7 +15,7 @@ export const Footer = () => {
             </Link>
             <Link target="_blank" href="https://instagram.com/stewart-island-adventures">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_431_170)">
+                    <g clipPath="url(#clip0_431_170)">
                     <path d="M24 12.0732C24 5.44624 18.627 0.0732422 12 0.0732422C5.373 0.0732422 0 5.44624 0 12.0732C0 18.0632 4.388 23.0272 10.125 23.9272V15.5422H7.078V12.0722H10.125V9.43024C10.125 6.42324 11.917 4.76124 14.658 4.76124C15.97 4.76124 17.344 4.99624 17.344 4.99624V7.94924H15.83C14.339 7.94924 13.874 8.87424 13.874 9.82324V12.0732H17.202L16.67 15.5432H13.874V23.9282C19.612 23.0272 24 18.0622 24 12.0732Z" fill="white"/>
                     </g>
                     <defs>

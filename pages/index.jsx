@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { Image } from "../components/Image";
+import { Layout } from "../components/Layout";
 
 export default function IndexPage({ home }) {
     const data = home[0];
@@ -15,23 +16,21 @@ export default function IndexPage({ home }) {
     if(!data) { return(<></>)}
 
     return (
-        <div className={`dive-rakiura ${lightMode ? 'light-mode' : ''}`}>
-        <Header lightMode={(e) => toggleLightMode(!lightMode)}/>
-        <main>
-            <section className="gc full-height">
+        <Layout>
+            <section className="gc full-height pd-bottom--l m-pd-bottom--0">
                 {data.imagesGallery ? 
                     <div className="d-1-13">
                         {data.imagesGallery.map((img, i) => (
-                            <Image client={client} image={img} key={i} />
+                            <Image client={client} image={img} key={i} ratio="3-1 m-ratio-2-3" />
                         ))}
                     </div>
                 : ''}
-                <div className="d-4-10 m-1-13 pd-top--m pd-bottom--l flex flex-column flex-center flex-middle gap--m">
+                <div className="d-4-10 m-1-13 pd-top--m pd-bottom--l m-pd-bottom--m flex flex-column flex-center flex-middle gap--m">
                     <h1 className="text--center">{data.title}</h1>
                     <a href="mailto:test@test.com"><button>Book Now</button></a>
                 </div>
                 {data.content ?
-                    <div className="d-2-6 m-1-13 flex flex-column gap--s">
+                    <div className="meta d-2-6 m-1-13 flex flex-column gap--s m-pd--s m-pd-bottom--m">
                         {data.pageTitle ? 
                             <p className="tiny">{data.pageTitle}</p>
                         : null}
@@ -44,14 +43,14 @@ export default function IndexPage({ home }) {
                     </div>
                 :''}
                 {data.poster ?
-                    <div className="d-7-13">
+                    <div className="d-7-13 m-1-13 m-r-3">
                         <Image client={client} image={data.poster} />
                     </div>
                 :''}
             </section>
             {data.imageBlocks ? 
-                <section class="gc pd-top--m pd-bottom--l">
-                    <div className="d-2-6 m-1-13 flex flex-column gap--s">
+                <section class="gc pd-top--m m-pd-top--s pd-bottom--l">
+                    <div className="meta d-2-6 m-1-13 flex flex-column gap--s m-pd-x--s m-pd-bottom--m">
                     {data.secondaryTitle ? 
                             <p className="tiny">{data.secondaryTitle}</p>
                         : null}
@@ -62,19 +61,17 @@ export default function IndexPage({ home }) {
                             <button className="btn-2">{data.secondaryButtonText}</button>
                         : null}
                     </div>
-                    <div className="d-7-13 m-1-13 gc-2-col col-gap--s">
+                    <div className="d-7-13 m-1-13 gc-2-col m-gc-1-col col-gap--s">
                         {data.imageBlocks.map((block, i) => (
                             <Link className="flex flex-column" key={i} href={`/gallery?filter=${block.caption}`}>
                                 <Image client={client} image={block.image} ratio="3-2" />
-                                <button className="btn-2 mg-y--s">{block.caption}</button>
+                                <button className="btn-2 mg-y--s m-mg-x--s">{block.caption}</button>
                             </Link>
                         ))}
                     </div>
                 </section>
             : null}
-            <Footer />
-        </main>
-    </div>
+    </Layout>
     )
 }
 

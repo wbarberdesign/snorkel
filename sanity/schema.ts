@@ -1,42 +1,10 @@
 import { SchemaTypeDefinition } from 'sanity'
 
 import { imageBlock } from './components/ImageBlocks';
-
+import { tourDetails } from './components/tourDetails';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
     types: [
-        {
-          title: "Page",
-          name: "page",
-          type: "document",
-          fields: [
-            {
-              title: "Title",
-              name: "title",
-              type: "string"
-            },
-            {
-                title: 'Poster',
-                name: 'poster',
-                type: 'image',
-                options: {
-                  hotspot: true // <-- Defaults to false
-                },
-                fields: [
-                  {
-                    name: 'caption',
-                    type: 'string',
-                    title: 'Caption',
-                  },
-                  {
-                    name: 'attribution',
-                    type: 'string',
-                    title: 'Attribution',
-                  }
-                ]
-              }
-          ]
-        } ,
         {
             title: "Home",
             name: "home",
@@ -113,6 +81,77 @@ export const schema: { types: SchemaTypeDefinition[] } = {
               },
             ],
           },
-          imageBlock
+            {
+            title: "Tours",
+            name: "tours",
+            type: "document",
+            fields: [
+                {
+                title: "Title",
+                name: "title",
+                type: "string"
+                },
+                {
+                    title: 'Poster',
+                    name: 'poster',
+                    type: 'image',
+                    options: {
+                    hotspot: true // <-- Defaults to false
+                    },
+                    fields: [
+                    {
+                        name: 'caption',
+                        type: 'string',
+                        title: 'Caption',
+                    },
+                    {
+                        name: 'attribution',
+                        type: 'string',
+                        title: 'Attribution',
+                    }
+                    ]
+                },
+                {
+                    title: "Section one title",
+                    name: "sOneTitle",
+                    type: "string"
+                },
+                {
+                    title: 'Section one content', 
+                    name: 'content',
+                    type: 'array', 
+                    of: [{type: 'block'}]
+                },
+                {
+                    name: 'tourDetails',
+                    type: 'array',
+                    title: 'Tour Details',
+                    of: [{ type: 'tourDetails' }],
+                  },
+                {
+                    title: "Section two title",
+                    name: "sTwoTitle",
+                    type: "string"
+                },
+                {
+                    title: 'Section two content', 
+                    name: 'sTwoContent',
+                    type: 'array', 
+                    of: [{type: 'block'}]
+                },
+                {
+                    title: "Section three title",
+                    name: "sThreeTitle",
+                    type: "string"
+                },
+                {
+                    title: 'Section three content', 
+                    name: 'sThreeContent',
+                    type: 'array', 
+                    of: [{type: 'block'}]
+                },
+            ]
+            },
+          imageBlock, tourDetails
       ],
 }
