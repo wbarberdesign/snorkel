@@ -46,11 +46,11 @@ export default function GalleryPage({ gallery }) {
                         data.galleryBlocks.map((block, i) => (
                             activeFilter == 'all' || activeFilter == block.type ?
                                 ((results++),
-                                <Image image={block.image} client={client} ratio="16-9" />)
+                                <Image image={block.image} client={client} ratio="16-9" alt={block.image.caption} />)
                             : null
                         ))
                     : null}
-                    {results == 0 ? <p className="flex flex-column gap--s">I'm sorry, your search returned no results. <button className="btn-2" onClick={(e) => updateFilter('all')}>See all</button></p> : ''}
+                    {results == 0 ? <p className="flex flex-column gap--s">Sorry, your search returned no results. <button className="btn-2" onClick={(e) => updateFilter('all')}>See all</button></p> : ''}
                 </div>
             </section>
         </Layout>

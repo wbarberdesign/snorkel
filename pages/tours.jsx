@@ -1,11 +1,11 @@
 import {PortableText} from '@portabletext/react'
+import Link from 'next/link';
 /* eslint-disable react-hooks/rules-of-hooks */
 import { createClient } from "next-sanity";
 import React from 'react'
 
 import { Image } from '../components/Image';
 import { Layout } from '../components/Layout';
-import Link from 'next/link';
 
 export default function tours({ tours }) {
     const data = tours[0];
@@ -46,7 +46,7 @@ export default function tours({ tours }) {
             :''}
             {data.poster ?
                 <div className="d-7-13 m-1-13 m-r-1">
-                    <Image client={client} image={data.poster} ratio="1-1" />
+                    <Image client={client} image={data.poster} ratio="1-1"  alt={data.poster.alt} />
                 </div>
             :''}
         </section>
