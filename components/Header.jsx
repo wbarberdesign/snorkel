@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import React, {useState} from "react";
 
 export const Header = ({toggleLightMode}) => {
     const router = useRouter();

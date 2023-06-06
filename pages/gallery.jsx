@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { createClient } from "next-sanity";
-
-import { Image } from "../components/Image";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
-import { useState, useEffect } from "react";
-import { GalleryFilter } from "../components/GalleryFilter";
-import { Layout } from "../components/Layout";
 import { useRouter } from 'next/router'
+import { createClient } from "next-sanity";
+import { useEffect,useState } from "react";
+
+import { Footer } from "../components/Footer";
+import { GalleryFilter } from "../components/GalleryFilter";
+import { Header } from "../components/Header";
+import { Image } from "../components/Image";
+import { Layout } from "../components/Layout";
 
 export default function GalleryPage({ gallery }) {
     if(!gallery) {return(<></>)}

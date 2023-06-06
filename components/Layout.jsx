@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
 import { motion } from "framer-motion";
-import { Header } from './Header';
+import React, {useState} from 'react'
+
 import { Footer } from './Footer';
+import { Header } from './Header';
 
 export const Layout = ({children}) => {
     const [lightMode, toggleLightMode] = useState(false);
