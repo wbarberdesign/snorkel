@@ -1,0 +1,87 @@
+// ====================================================== //
+// ------- THEME SPECIFIC SIZING ------- *
+// ====================================================== //
+    // ====================================================== //
+    // ------- Padding ------- *
+    // ====================================================== //
+    .pd-top--header-height { padding-top: var(--header-height); }
+    // ====================================================== //
+    // ------- Margin ------- *
+    // ====================================================== //
+    .mg-top--header-height { margin-top: var(--header-height); }
+    .mg-left--site-margin { margin-left: 9rem; }
+    // ====================================================== //
+    // ------- STICKY ------- *
+    // ====================================================== //
+    // .top--header-height { top: 147px; }
+
+$sizes: (
+    "xs": #{$spacingXSmall},
+    "xsx": #{$spacingXSmallPlus},
+    "s": #{$spacingSmall},
+    "sx": #{$spacingSmallPlus},
+    "m": #{$spacingMedium},
+    "mx": #{$spacingMediumPlus},
+    "l": #{$spacingLarge},
+    "xl": #{$spacingXLarge},
+    "xxl": #{$spacingXLarge},
+    "0": 0
+);
+
+$directions: ("top", "left", "right", "bottom");
+
+@each $size, $value in $sizes {
+    .pd--#{$size} { padding: #{$value}; }
+    .pd-x--#{$size} { padding-left: #{$value}; padding-right: #{$value}; }
+    .pd-y--#{$size} { padding-top: #{$value}; padding-bottom: #{$value}; }
+
+    .mg--#{$size} { margin: #{$value}; }
+    .mg-x--#{$size} { margin-left: #{$value}; margin-right: #{$value}; }
+    .mg-y--#{$size} { margin-top: #{$value}; margin-bottom: #{$value}; }
+    .gap--#{$size} { gap: #{$value}; }
+    .row-gap--#{$size} { row-gap: #{$value}; }
+    .col-gap--#{$size} { column-gap: #{$value}; }
+
+    @each $direction in $directions {
+        .pd-#{$direction}--#{$size} { padding-#{$direction}: $value; }
+        .mg-#{$direction}--#{$size} { margin-#{$direction}: $value; }
+    }
+}
+
+@include tabletOnly {
+    @each $size, $value in $sizes {
+        .t-pd--#{$size} { padding: #{$value}; }
+        .t-pd-x--#{$size} { padding-left: #{$value}; padding-right: #{$value}; }
+        .t-pd-y--#{$size} { padding-top: #{$value}; padding-bottom: #{$value}; }
+
+        .t-mg--#{$size} { margin: #{$value}; }
+        .t-mg-x--#{$size} { margin-left: #{$value}; margin-right: #{$value}; }
+        .t-mg-y--#{$size} { margin-top: #{$value}; margin-bottom: #{$value}; }
+        .t-gap--#{$size} { gap: #{$value}; }
+        .t-row-gap--#{$size} { row-gap: #{$value}; }
+        .t-col-gap--#{$size} { column-gap: #{$value}; }
+        @each $direction in $directions {
+            .t-pd-#{$direction}--#{$size} { padding-#{$direction}: $value; }
+            .t-mg-#{$direction}--#{$size} { margin-#{$direction}: $value; }
+        }
+    }
+}
+
+@include mobileOnly {
+    @each $size, $value in $sizes {
+        .m-pd--#{$size} { padding: #{$value}; }
+        .m-pd-x--#{$size} { padding-left: #{$value}; padding-right: #{$value}; }
+        .m-pd-y--#{$size} { padding-top: #{$value}; padding-bottom: #{$value}; }
+
+        .m-mg--#{$size} { margin: #{$value}; }
+        .m-mg-x--#{$size} { margin-left: #{$value}; margin-right: #{$value}; }
+        .m-mg-y--#{$size} { margin-top: #{$value}; margin-bottom: #{$value}; }
+        .m-gap--#{$size} { gap: #{$value}; }
+        .m-row-gap--#{$size} { row-gap: #{$value}; }
+        .m-col-gap--#{$size} { column-gap: #{$value}; }
+        @each $direction in $directions {
+            .m-pd-#{$direction}--#{$size} { padding-#{$direction}: $value; }
+            .m-mg-#{$direction}--#{$size} { margin-#{$direction}: $value; }
+        }
+    }
+}

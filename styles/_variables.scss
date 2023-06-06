@@ -1,0 +1,45 @@
+// SPACING VARIABLES
+$spacingXSmall: 0.8rem;
+$spacingXSmallPlus: 1.2rem;
+$spacingSmall: 2rem;
+$spacingSmallPlus: 3rem;
+$spacingMedium: 4rem;
+$spacingMediumPlus: 6rem;
+$spacingLarge: 8rem;
+$spacingXLarge: 120rem;
+$spacingXXLarge: 200rem;
+// OFFSET VARIABLES
+$offsetSmall: 50px;
+$offsetMedium: 100px;
+$offsetLarge: 225px;
+$offsetXL: 550px;
+// CONTAINER VARIABLES
+$siteMargin: 6rem;
+// COLOUR VARIABLES
+
+$themeXLightGrey: #ECF0F1;
+$themeLightGrey: #999999;
+$themeGreyTwo: #E6E6E6;
+$themeGreyMedium: #BBBBBB;
+$themeDarkGrey: #848484;
+$themeDarkBlush: #8C7067;
+$themeWhite: #FFFFFF;
+$themeBlack: #000000;
+$themeCream: #EEE4D1;
+$themeGrey: #F7F2E8;
+$themeRed: #CE463F;
+$themeOrange: #E75424;
+$themeLightGreen: #3AAD53;
+$themeYellow: #EBA820;
+$themeBlue: #1992B3;
+$themePurple: #566DB2;
+
+// GRID VARIABLES
+$gridColumnCount: 12;
+$gridColumnLast: $gridColumnCount + 1;
+$gridRowGap: 0.5rem;
+$gridColumnGap: 1rem;
+// RESPONSIVE VARIABLES
+$largeScreenBreakpoint: 1920px;
+$tabletBreakpoint: 1180px;
+$mobileBreakpoint: 750px;

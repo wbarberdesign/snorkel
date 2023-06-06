@@ -1,0 +1,111 @@
+// USE VARIABLES FOR GENERAL SETTINGS
+// BARBER DEVELOPMENT STARTER
+@import '_variables.scss';
+@import '_mixins.scss';
+@import '_grid.scss';
+@import '_spacing.scss';
+@import '_reset.scss';
+@import '_flex.scss';
+@import '_flex.scss';
+@import '_aspectRatios.scss';
+@import '_helpers.scss';
+@import '_responsive.scss';
+
+@font-face {
+    font-family: 'Akkurat';
+    src: url('./fonts/Akkurat-Mono.OTF');
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+.dive-rakiura {
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    --primary: #000;
+    --secondary: #FFF;
+    --font-l: 3.6rem;
+    --font-m: 2rem;
+    --font-s: 1.4rem;
+    --font-xs: 1.2rem;
+    background: var(--primary);
+    color: var(--secondary);
+    font-size: 1.4rem;
+    font-family: 'Akkurat';
+// WRAPPER TO IGNORE STYLES IN SANITY
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: var(--primary);
+    width: 100%;
+}
+
+section {
+    border-bottom: var(--secondary);
+    padding-bottom: $spacingLarge;
+}
+
+a, button {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--secondary);
+    @include transition(.3s all ease-out);
+    font-family: 'Akkurat';
+}
+
+button {
+    color: var(--secondary);
+    background: transparent;
+    &:not(.btn-2) {
+        border: 0.1rem solid currentColor;
+        height: 4rem;
+        min-width: 24rem;
+        &:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+    }
+    &.btn-2 {
+        border: none;
+        width: fit-content;
+        min-width: unset;
+        border-bottom: 1px solid currentColor;
+        display: flex;
+        gap: 0.5em;
+        height: unset;
+        padding: 0;
+        opacity: 0.8;
+        padding-bottom: $spacingXSmall;
+        &:after {
+            content: ' >';
+            display: block;
+        }
+        &:hover {
+            opacity: 1;
+            gap: 1rem;
+        }
+    }
+}
+
+h1 {
+    font-size: var(--font-l);
+}
+
+p {
+    line-height: 160%;
+    font-size: var(--font-m);
+}
+
+.tiny {
+    font-size: var(--font-xs);
+}
+
+header {
+    border-bottom: 0.1rem solid var(--secondary);
+}
+
+}

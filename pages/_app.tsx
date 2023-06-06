@@ -1,5 +1,3 @@
-import 'styles/global.css'
-
 import { IBM_Plex_Mono, Inter, PT_Serif } from '@next/font/google'
 import { AppProps } from 'next/app'
 
@@ -21,6 +19,9 @@ const serif = PT_Serif({
   subsets: ['latin'],
   weight: ['400', '700'],
 })
+
+
+import 'styles/main.scss';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

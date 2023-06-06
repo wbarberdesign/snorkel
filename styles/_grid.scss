@@ -1,0 +1,94 @@
+.gc {
+    display: grid;
+    grid-template-columns: repeat($gridColumnCount, 1fr);
+    grid-gap: $gridColumnGap;
+    row-gap: $gridRowGap;
+    // width: 100%;
+}
+// DESKTOP
+@for $start from 0 through $gridColumnLast {
+    .span-#{$start} { grid-column: span $start; }
+    .d-span-#{$start} { grid-column: span $start; }
+    .r-#{$start} { grid-row: $start; }
+    .col-count-#{$start} {
+        grid-template-columns: repeat(#{$start}, 1fr);
+    }
+    @for $end from 0 through $gridColumnLast {
+        .d-#{$start}-#{$end} { grid-column: #{$start} / #{$end}; }
+        .r-#{$start}-#{$end} { grid-row: #{$start} / #{$end} }
+
+    }
+}
+
+@for $i from 0 through 6 {
+    .gc-#{$i}-col {
+        display: grid;
+        grid-template-columns: repeat($i, 1fr);
+    }
+}
+// TABLET
+@include tabletOnly {
+    @for $start from 0 through $gridColumnLast {
+        .t-span-#{$start} { grid-column: span $start; }
+        .t-r-#{$start} { grid-row: $start; }
+        .t-col-count-#{$start} {
+            grid-template-columns: repeat(#{$start}, 1fr);
+        }
+        @for $end from 0 through $gridColumnLast {
+            .t-#{$start}-#{$end} { grid-column: #{$start} / #{$end}; }
+        }
+    }
+    @for $i from 0 through 6 {
+        .t-gc-#{$i}-col {
+            display: grid;
+            grid-template-columns: repeat($i, 1fr);
+        }
+    }
+}
+// MOBILE
+@include mobileOnly {
+    @for $start from 0 through $gridColumnLast {
+        .m-span-#{$start} { grid-column: span $start; }
+        .m-r-#{$start} { grid-row: $start; }
+        .m-col-count-#{$start} {
+            grid-template-columns: repeat(#{$start}, 1fr);
+        }
+        @for $end from 0 through $gridColumnLast {
+            .m-#{$start}-#{$end} { grid-column: #{$start} / #{$end}; }
+        }
+    }
+    .m-r-auto { grid-row: auto; }
+    @for $i from 0 through 6 {
+        .m-gc-#{$i}-col {
+            display: grid;
+            grid-template-columns: repeat($i, 1fr);
+        }
+    }
+}
+
+@media(max-width: 1400px) {
+    .lt-gc-3-col {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+.span-all {
+    grid-column: 1 / -1;
+}
+
+.r-all {
+    grid-row: 0 / 20;
+}
+
+.next-row {
+    grid-row: none;
+}
+
+.gc-r-min {
+    grid-template-rows: min-content;
+}
+
+.gc-gap-2 {
+    column-gap: 0.2rem;
+}

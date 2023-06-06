@@ -1,0 +1,139 @@
+// TRANSITION MIXINS
+@use "sass:math";
+
+@mixin transition($x...){
+    -webkit-transition: $x;
+    -moz-transition: $x;
+    -ms-transition: $x;
+    -o-transition: $x;
+    transition: $x;
+}
+
+// TRANSFORM MIXINS
+@mixin translateX($x...){
+    transform: translateX($x);
+    -moz-transform: translateX($x);
+    -webkit-transform: translateX($x);
+    -o-transform: translateX($x);
+}
+@mixin translateY($y...){
+    transform: translateY($y);
+    -moz-transform: translateY($y);
+    -webkit-transform: translateY($y);
+    -o-transform: translateY($y);
+}
+@mixin translateZ($z...){
+    transform: translateZ($z);
+    -moz-transform: translateZ($z);
+    -webkit-transform: translateZ($z);
+    -o-transform: translateZ($z);
+}
+
+@mixin translate3D($x, $y, $z) {
+    transform: translate3d($x, $y, $z);
+    -webkit-transform: translate3d($x, $y, $z);
+    -moz-transform: translate3d($x, $y, $z);
+}
+
+@mixin scale($x, $y){
+    transform: scale($x, $y);
+    -moz-transform: scale($x, $y);
+    -webkit-transform: scale($x, $y);
+    -o-transform: scale($x, $y);
+}
+@mixin transformOrigin($x...){
+    transform-origin: $x;
+    -moz-transform-origin: $x;
+    -o-transform-origin: $x;
+    -webkit-transform-origin: $x;
+}
+@mixin rotate($x...){
+    transform: rotate($x);
+    -moz-transform: rotate($x);
+    -webkit-transform: rotate($x);
+    -o-transform: rotate($x);
+}
+
+// FONT MIXINS
+@mixin fontFace($fontName, $fileType) {
+    @font-face {
+        font-family: $fontName;
+        src: url('#{$fontsDirectory}/#{$fontName}.#{$fileType}');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+}
+
+// RESPONSIVE MIXINS
+@mixin largeScreenOnly {
+    @media (min-width: $largeScreenBreakpoint) { @content; }
+}
+@mixin tabletOnly {
+    @media (max-width: $tabletBreakpoint) { @content; }
+}
+@mixin tabletPlus {
+    @media (min-width: $tabletBreakpoint) { @content; }
+}
+@mixin mobileOnly {
+    @media (max-width: $mobileBreakpoint) { @content; }
+}
+
+// LAYOUT MIXINS
+@mixin aspectRatio($width, $height) {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: math.div($height, $width) * 100%;
+    }
+    > .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        &.top {
+            top: 0;
+        }
+        &.bottom {
+            bottom: 0;
+        }
+        // object-fit: cover;
+    }
+    &.m-ratio-auto {
+        @include mobileOnly {
+            position: relative;
+            width: 100%;
+            &:before {
+                display: none;
+            }
+            > .content {
+                position: relative;
+            }
+        }
+    }
+}
+
+@mixin backgroundImage($backgroundSize, $backgroundPosition) {
+    background-size: $backgroundSize;
+    background-position: $backgroundPosition;
+    background-repeat: no-repeat;
+}
+
+@mixin gradient($direction, $list) {
+    background: -webkit-linear-gradient($direction, $list);
+    background: -moz-linear-gradient($direction, $list);
+    background: -o-linear-gradient($direction, $list);
+    background: linear-gradient($direction, $list);  
+    background-position: $direction;
+    background-size: 100%;
+    transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+}
