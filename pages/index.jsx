@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { createClient } from "next-sanity";
 import {PortableText} from '@portabletext/react'
-
-import { Image } from "../components/Image";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
+import Link from "next/link";
+import { createClient } from "next-sanity";
 import { useState } from "react";
+
+import { Footer } from "../components/Footer";
+import { Header } from "../components/Header";
+import { Image } from "../components/Image";
 
 export default function IndexPage({ home }) {
     const data = home[0];
@@ -63,10 +64,10 @@ export default function IndexPage({ home }) {
                     </div>
                     <div className="d-7-13 m-1-13 gc-2-col col-gap--s">
                         {data.imageBlocks.map((block, i) => (
-                            <a className="flex flex-column" key={i} href={`/gallery?filter=${block.caption}`}>
+                            <Link className="flex flex-column" key={i} href={`/gallery?filter=${block.caption}`}>
                                 <Image client={client} image={block.image} ratio="3-2" />
                                 <button className="btn-2 mg-y--s">{block.caption}</button>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </section>
