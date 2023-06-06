@@ -14,8 +14,8 @@ export default function IndexPage({ home }) {
         <section className="gc full-height">
             {home[0].imagesGallery ? 
                 <div className="d-1-13">
-                    {home[0].imagesGallery.map((img) => (
-                        <Image client={client} image={img} />
+                    {home[0].imagesGallery.map((img, i) => (
+                        <Image client={client} image={img} key={i} />
                     ))}
                 </div>
             : ''}

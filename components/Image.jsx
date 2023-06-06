@@ -7,7 +7,7 @@ export const Image = ({client, image}) => {
     <Img
         {...useNextSanityImage(client, image)}
         style={{ maxWidth: '100%', height: 'auto' }} // layout="intrinsic" prior to Next 13.0.0
-        alt='image'
+        alt={image.caption}
     />  
     )
 }
