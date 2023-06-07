@@ -1,8 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import 'swiper/css';
+
 import {PortableText} from '@portabletext/react'
 import Link from "next/link";
 import { createClient } from "next-sanity";
 import { useState } from "react";
+import { A11y,Navigation, Pagination, Scrollbar } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
@@ -20,9 +24,21 @@ export default function IndexPage({ home }) {
             <section className="gc full-height pd-bottom--l m-pd-bottom--0">
                 {data.imagesGallery ? 
                     <div className="d-1-13">
-                        {data.imagesGallery.map((img, i) => (
-                            <Image client={client} image={img} key={i} ratio="3-1 m-ratio-2-3" />
-                        ))}
+                            <Swiper
+                                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                                navigation
+                                loop={true}
+                                pagination={{ clickable: true }}
+                                onSlideChange={() => console.log('slide change')}
+                                onSwiper={(swiper) => console.log(swiper)}
+                                >
+                                {data.imagesGallery.map((img, i) => (
+                                    <SwiperSlide key={i}>
+                                        <Image client={client} image={img} ratio="3-1 m-ratio-2-3" />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+
                     </div>
                 : ''}
                 <div className="d-4-10 m-1-13 pd-top--m pd-bottom--l m-pd-bottom--m flex flex-column flex-center flex-middle gap--m">
@@ -63,7 +79,7 @@ export default function IndexPage({ home }) {
                     </div>
                     <div className="d-7-13 m-1-13 gc-2-col m-gc-1-col col-gap--s">
                         {data.imageBlocks.map((block, i) => (
-                            <Link className="flex flex-column" key={i} href={`/gallery?filter=${block.caption.toLowerCase().replace(" ", "-")}`}>
+                            <Link className="flex flex-column" key={i} href={`/gallery?filter=${block.caption.toLowerCase().replaceAll(" ", "-")}`}>
                                 <Image client={client} image={block.image} ratio="3-2" />
                                 <button className="btn-2 mg-y--s m-mg-x--s">{block.caption}</button>
                             </Link>

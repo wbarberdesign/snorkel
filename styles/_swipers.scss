@@ -1,0 +1,29 @@
+.swiper-button-prev, .swiper-button-next {
+    position: absolute;
+    top: calc(50% - 0.5rem);
+    height: 1rem;
+    width: 1rem;
+    z-index: 2000;
+    cursor: pointer;
+}
+.swiper-button-prev {
+    left: 2rem;
+    &:after {
+        content: '<';
+        display: block;
+    }
+}
+.swiper-button-next {
+    right: 2rem;
+    &:after {
+        content: '>';
+        display: block;
+    }
+}
+
+.swiper-slide {
+    cursor: grab;
+    &:focus {
+        cursor: grabbing;
+    }
+}

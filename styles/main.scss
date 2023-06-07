@@ -9,6 +9,7 @@
 @import '_flex.scss';
 @import '_aspectRatios.scss';
 @import '_helpers.scss';
+@import 'swipers.scss';
 @import '_responsive.scss';
 
 @font-face {
@@ -28,9 +29,11 @@ body,
     margin: 0;
     --primary: #000;
     --secondary: #FFF;
+    --primary-fade: rgba(0,0,0,0.85);
     &.light-mode {
         --primary: #FFF;
         --secondary: #000;
+        --primary-fade: rgba(255,255,255,0.85);
     }
     --font-l: 3.6rem;
     --font-m: 2rem;
@@ -56,11 +59,14 @@ svg {
     }
 }
 header {
+    border-bottom: 0.1rem solid var(--secondary);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     position: fixed;
     height: var(--header-height);
     left: 0;
     top: 0;
-    background: var(--primary);
+    background: var(--primary-fade);
     width: 100%;
     z-index: 50;
     a:hover {
@@ -177,10 +183,6 @@ p, .body {
 
 .tiny {
     font-size: var(--font-xs);
-}
-
-header {
-    border-bottom: 0.1rem solid var(--secondary);
 }
 
 .image-container {

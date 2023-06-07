@@ -141,6 +141,26 @@ export const schema: { types: SchemaTypeDefinition[] } = {
                     of: [{type: 'block'}]
                 },
                 {
+                    title: 'Section two image',
+                    name: 'sTwoImage',
+                    type: 'image',
+                    options: {
+                      hotspot: true // <-- Defaults to false
+                    },
+                    fields: [
+                      {
+                        name: 'caption',
+                        type: 'string',
+                        title: 'Caption',
+                      },
+                      {
+                        name: 'attribution',
+                        type: 'string',
+                        title: 'Attribution',
+                      }
+                    ]
+                  },
+                {
                     title: "Section three title",
                     name: "sThreeTitle",
                     type: "string"

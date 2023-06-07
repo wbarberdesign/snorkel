@@ -46,7 +46,7 @@ export default function tours({ tours }) {
             :''}
             {data.poster ?
                 <div className="d-7-13 m-1-13 m-r-1">
-                    <Image client={client} image={data.poster} ratio="1-1"  alt={data.poster.alt} />
+                    <Image client={client} image={data.poster} ratio="16-9 m-ratio-1-1"  alt={data.poster.alt} />
                 </div>
             :''}
         </section>
@@ -59,6 +59,11 @@ export default function tours({ tours }) {
                     value={data.sTwoContent}
                 />
             </div>
+            {data.sTwoImage ?
+                <div className="d-7-13 m-1-13 m-r-1">
+                    <Image client={client} image={data.sTwoImage} ratio="16-9 m-ratio-1-1"  alt={data.sTwoImage.alt} />
+                </div>
+            :''}
         </section>
         <section className="gc pd-top--m pd-bottom--l m-pd--0">
         <div className="d-2-6 m-1-13 flex flex-column gap--s m-pd--s m-pd-bottom--m">
