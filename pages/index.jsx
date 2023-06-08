@@ -34,7 +34,11 @@ export default function IndexPage({ home, siteSettings }) {
                                 >
                                 {data.imagesGallery.map((img, i) => (
                                     <SwiperSlide key={i}>
-                                        <Image client={client} image={img} ratio="3-1 m-ratio-1-1" />
+                                        <Image 
+                                        client={client} 
+                                        image={img} 
+                                        priority={i === 0 ? true : false}
+                                        ratio="3-1 m-ratio-1-1" />
                                     </SwiperSlide>
                                 ))}
                             </Swiper>

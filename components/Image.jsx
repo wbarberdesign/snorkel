@@ -2,7 +2,7 @@ import Img from 'next/image';
 import { useNextSanityImage } from 'next-sanity-image';
 import React from "react"
 
-export const Image = ({client, image, ratio}) => {
+export const Image = ({client, image, ratio, priority}) => {
     let classNames = 'image-container';
     if(ratio) {
         classNames += ' ratio-' + ratio;
@@ -15,6 +15,8 @@ export const Image = ({client, image, ratio}) => {
                 alt={image.caption}
                 sizes="(max-width: 800px) 100vw, 800px"
                 className="content"
+                loading={priority ? 'eager' : ''} 
+                priority={priority}
             />  
         </div>
     )
