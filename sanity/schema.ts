@@ -1,11 +1,38 @@
 import { SchemaTypeDefinition } from 'sanity'
 
+import { galleryBlock } from './components/galleryBlocks';
 import { imageBlock } from './components/ImageBlocks';
 import { tourDetails } from './components/tourDetails';
-import { galleryBlock } from './components/galleryBlocks';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
     types: [
+        {
+            title: "Site Settings",
+            name: "siteSettings",
+            type: "document",
+            fields: [
+              {
+                title: "Contact Email",
+                name: "email",
+                type: "string"
+              },
+              {
+                title: "Contact Phone",
+                name: "phone",
+                type: "string"
+              },
+              {
+                title: "Instagram",
+                name: "instagram",
+                type: "url"
+              },
+              {
+                title: "Facebook",
+                name: "facebook",
+                type: "url"
+              },
+            ],
+          },
         {
             title: "Home",
             name: "home",
@@ -59,6 +86,11 @@ export const schema: { types: SchemaTypeDefinition[] } = {
                 type: "string"
               },
               {
+                title: "Button Url",
+                name: "buttonUrl",
+                type: "string"
+              },
+              {
                 title: "Secondary Title",
                 name: "secondaryTitle",
                 type: "string"
@@ -72,6 +104,11 @@ export const schema: { types: SchemaTypeDefinition[] } = {
               {
                 title: "Secondary Button Text",
                 name: "secondaryButtonText",
+                type: "string"
+              },
+              {
+                title: "Secondary Button Url",
+                name: "secondaryButtonUrl",
                 type: "string"
               },
               {

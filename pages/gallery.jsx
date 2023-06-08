@@ -9,7 +9,7 @@ import { Header } from "../components/Header";
 import { Image } from "../components/Image";
 import { Layout } from "../components/Layout";
 
-export default function GalleryPage({ gallery }) {
+export default function GalleryPage({ gallery, siteSettings }) {
     if(!gallery) {return(<></>)}
     const data = gallery[0];
     const [activeFilter, setActiveFilter] = useState('all');
@@ -34,7 +34,7 @@ export default function GalleryPage({ gallery }) {
     if(!data) { return(<></>)}
     let results = 0;
     return (
-        <Layout>
+        <Layout siteSettings={siteSettings}>
             <section className="gc full-height">
                 <div className="d-1-13 pd--s pd-top--m flex gap--s flex-column">
                     <h1 className="small">Gallery</h1>
@@ -66,10 +66,12 @@ const client = createClient({
   
   export async function getStaticProps() {
     const gallery = await client.fetch(`*[_type == "gallery"]`);
+    const siteSettings = await client.fetch(`*[_type == "siteSettings"]`);
   
     return {
       props: {
-        gallery
+        gallery,
+        siteSettings
       }
     };
   }

@@ -7,11 +7,11 @@ import React from 'react'
 import { Image } from '../components/Image';
 import { Layout } from '../components/Layout';
 
-export default function tours({ tours }) {
+export default function tours({ tours, siteSettings }) {
     const data = tours[0];
     console.log(data)
   return (
-    <Layout>
+    <Layout siteSettings={siteSettings}>
         <nav class="flex flex-middle flex-s-between mobile-only pd-y--xs pd-x--s">
             <Link href="/">
                 <svg width="5" height="9" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -88,10 +88,12 @@ const client = createClient({
   
   export async function getStaticProps() {
     const tours = await client.fetch(`*[_type == "tours"]`);
+    const siteSettings = await client.fetch(`*[_type == "siteSettings"]`);
   
     return {
       props: {
-        tours
+        tours,
+        siteSettings
       }
     };
   }

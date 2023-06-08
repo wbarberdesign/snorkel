@@ -13,14 +13,14 @@ import { Header } from "../components/Header";
 import { Image } from "../components/Image";
 import { Layout } from "../components/Layout";
 
-export default function IndexPage({ home }) {
+export default function IndexPage({ home, siteSettings }) {
     const data = home[0];
     const [lightMode, toggleLightMode] = useState(false)
     console.log(data);
     if(!data) { return(<></>)}
 
     return (
-        <Layout>
+        <Layout siteSettings={siteSettings}>
             <section className="gc full-height pd-bottom--l m-pd-bottom--0">
                 {data.imagesGallery ? 
                     <div className="d-1-13">
@@ -34,7 +34,7 @@ export default function IndexPage({ home }) {
                                 >
                                 {data.imagesGallery.map((img, i) => (
                                     <SwiperSlide key={i}>
-                                        <Image client={client} image={img} ratio="3-1 m-ratio-2-3" />
+                                        <Image client={client} image={img} ratio="3-1 m-ratio-1-1" />
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
@@ -54,7 +54,9 @@ export default function IndexPage({ home }) {
                             value={data.content}
                         />
                         {data.buttonText ? 
-                            <button className="btn-2">{data.buttonText}</button>
+                            <Link href={data.buttonUrl ?? ''}>
+                                <button className="btn-2">{data.buttonText}</button>
+                            </Link>
                         : null}
                     </div>
                 :''}
@@ -74,7 +76,9 @@ export default function IndexPage({ home }) {
                             value={data.secondaryContent}
                         />
                         {data.secondaryButtonText ? 
-                            <button className="btn-2">{data.secondaryButtonText}</button>
+                            <Link href={data.secondaryButtonUrl ?? ''}>
+                                <button className="btn-2">{data.secondaryButtonText}</button>
+                            </Link>
                         : null}
                     </div>
                     <div className="d-7-13 m-1-13 gc-2-col m-gc-1-col col-gap--s">
@@ -100,10 +104,13 @@ const client = createClient({
   
   export async function getStaticProps() {
     const home = await client.fetch(`*[_type == "home"]`);
+    const siteSettings = await client.fetch(`*[_type == "siteSettings"]`);
   
     return {
       props: {
-        home
+        home,
+        siteSettings
       }
     };
   }
+  

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, {useState} from "react";
 
-export const Header = ({toggleLightMode}) => {
+export const Header = ({toggleLightMode, email}) => {
     const router = useRouter();
     const [menuOpen, toggleMenuOpen] = useState(false);
     return (
@@ -26,7 +26,7 @@ export const Header = ({toggleLightMode}) => {
                 </Link>
             </div>
             <div className="d-7-13 m-1-13 tablet-plus r-1">
-                <nav className="flex flex-middle h-100">
+                <nav className="flex flex-middle flex-to-right flex-s-between h-100">
                     <ul className="flex flex-r m-flex-column flex-middle gap--s">
                         <li><Link href="/tours" className={router.pathname == '/tours' ? 'active' : ''}>Tours</Link></li>
                         <li><Link href="/gallery" className={router.pathname == '/gallery' ? 'active' : ''}>Gallery</Link></li>
@@ -35,6 +35,9 @@ export const Header = ({toggleLightMode}) => {
                         <input type="checkbox" name="lightMode" id="lightMode" onChange={(e) => toggleLightMode(e)}/>
                         </li>
                     </ul>
+                    <Link href={`mailto:${email}`} target="_blank">
+                        <button>Book now</button>
+                    </Link>
                 </nav>
             </div>
             <div className="mobile-only r-1">
