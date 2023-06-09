@@ -15,7 +15,7 @@ export const Image = ({client, image, ratio, priority}) => {
                 alt={image.caption}
                 sizes="(max-width: 800px) 100vw, 800px"
                 className="content"
-                loading={priority ? 'eager' : ''} 
+                loading={priority ? 'eager' : 'lazy'} 
                 priority={priority}
             />  
         </div>
