@@ -208,6 +208,26 @@ export const schema: { types: SchemaTypeDefinition[] } = {
                     type: 'array', 
                     of: [{type: 'block'}]
                 },
+                {
+                    title: 'Section three image',
+                    name: 'sThreeImage',
+                    type: 'image',
+                    options: {
+                      hotspot: true // <-- Defaults to false
+                    },
+                    fields: [
+                      {
+                        name: 'caption',
+                        type: 'string',
+                        title: 'Caption',
+                      },
+                      {
+                        name: 'attribution',
+                        type: 'string',
+                        title: 'Attribution',
+                      }
+                    ]
+                  },
             ]
             },
             {
@@ -228,6 +248,111 @@ export const schema: { types: SchemaTypeDefinition[] } = {
                     }
                 ]
                 },
+                {
+                    title: "Locations",
+                    name: "locations",
+                    type: "document",
+                    fields: [
+                        {
+                        title: "Title",
+                        name: "title",
+                        type: "string"
+                        },
+                        {
+                            title: 'Poster',
+                            name: 'poster',
+                            type: 'image',
+                            options: {
+                            hotspot: true // <-- Defaults to false
+                            },
+                            fields: [
+                            {
+                                name: 'caption',
+                                type: 'string',
+                                title: 'Caption',
+                            },
+                            {
+                                name: 'attribution',
+                                type: 'string',
+                                title: 'Attribution',
+                            }
+                            ]
+                        },
+                        {
+                            title: "Section one title",
+                            name: "sOneTitle",
+                            type: "string"
+                        },
+                        {
+                            title: 'Section one content', 
+                            name: 'content',
+                            type: 'array', 
+                            of: [{type: 'block'}]
+                        },
+                        {
+                            title: "Section two title",
+                            name: "sTwoTitle",
+                            type: "string"
+                        },
+                        {
+                            title: 'Section two content', 
+                            name: 'sTwoContent',
+                            type: 'array', 
+                            of: [{type: 'block'}]
+                        },
+                        {
+                            title: 'Section two image',
+                            name: 'sTwoImage',
+                            type: 'image',
+                            options: {
+                              hotspot: true // <-- Defaults to false
+                            },
+                            fields: [
+                              {
+                                name: 'caption',
+                                type: 'string',
+                                title: 'Caption',
+                              },
+                              {
+                                name: 'attribution',
+                                type: 'string',
+                                title: 'Attribution',
+                              }
+                            ]
+                          },
+                        {
+                            title: "Section three title",
+                            name: "sThreeTitle",
+                            type: "string"
+                        },
+                        {
+                            title: 'Section three content', 
+                            name: 'sThreeContent',
+                            type: 'array', 
+                            of: [{type: 'block'}]
+                        },
+                        {
+                            title: 'Section three image',
+                            name: 'sThreeImage',
+                            type: 'image',
+                            options: {
+                              hotspot: true // <-- Defaults to false
+                            },
+                            fields: [
+                              {
+                                name: 'caption',
+                                type: 'string',
+                                title: 'Caption',
+                              },
+                              {
+                                name: 'attribution',
+                                type: 'string',
+                                title: 'Attribution',
+                              }
+                            ]
+                          },
+                    ]
+                    },
           imageBlock, tourDetails, galleryBlock
       ],
 }

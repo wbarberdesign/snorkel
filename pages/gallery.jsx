@@ -36,7 +36,7 @@ export default function GalleryPage({ gallery, siteSettings }) {
     return (
         <Layout siteSettings={siteSettings}>
             <section className="gc full-height">
-                <div className="d-1-13 pd--s pd-top--m flex gap--s flex-column">
+                <div className="d-1-13 pd--s pd-x--l pd-bottom--m m-pd-x--s pd-top--m flex gap--s flex-column">
                     <h1 className="small">Gallery</h1>
                     <GalleryFilter 
                         activeFilter={activeFilter}

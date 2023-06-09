@@ -5,16 +5,20 @@
     width: 1rem;
     z-index: 2000;
     cursor: pointer;
+    @include transition(.3s ease-out);
+    &:hover {
+        @include scale(1.5, 1.5);
+    }
 }
 .swiper-button-prev {
-    left: 2rem;
+    left: 8rem;
     &:after {
         content: '<';
         display: block;
     }
 }
 .swiper-button-next {
-    right: 2rem;
+    right: 8rem;
     &:after {
         content: '>';
         display: block;
@@ -25,5 +29,41 @@
     cursor: grab;
     &:focus {
         cursor: grabbing;
+    }
+}
+
+.swiper-container {
+    position: relative;
+    counter-reset: my-pagination-counter;
+}
+
+.swiper-pagination {
+    position: absolute;
+    bottom: 2rem;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    .swiper-pagination-bullet {
+        height: 0.8rem;
+        width: 0.8rem;
+        cursor: pointer;
+        border-radius: 1rem;
+        background: var(--secondary);
+        border: 0.1rem solid transparent;
+        @include transition(.3s ease-out);
+        &:hover {
+            border: 0.1rem solid var(--primary);
+            @include scale(1.5, 1.5);
+        }
+        &-active {
+            background: var(--primary);
+            border: 0.1rem solid var(--secondary);
+            &:hover {
+                border: 0.1rem solid var(--secondary);
+            }
+        }
     }
 }

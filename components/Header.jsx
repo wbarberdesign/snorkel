@@ -7,7 +7,7 @@ export const Header = ({toggleLightMode, email}) => {
     const [menuOpen, toggleMenuOpen] = useState(false);
     return (
         <>
-        <header className="pd-x--s gc relative">
+        <header className="pd-x--l gc relative">
             <div className="d-1-6 r-1 m-1-13 h-100 flex m-flex-center flex-middle">
                 <Link href="/">
                     <svg width="263" height="28" viewBox="0 0 263 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,16 +27,17 @@ export const Header = ({toggleLightMode, email}) => {
             </div>
             <div className="d-7-13 m-1-13 tablet-plus r-1">
                 <nav className="flex flex-middle flex-to-right flex-s-between h-100">
-                    <ul className="flex flex-r m-flex-column flex-middle gap--s">
+                    <ul className="main-menu flex flex-r m-flex-column flex-middle gap--s">
                         <li><Link href="/tours" className={router.pathname == '/tours' ? 'active' : ''}>Tours</Link></li>
                         <li><Link href="/gallery" className={router.pathname == '/gallery' ? 'active' : ''}>Gallery</Link></li>
+                        <li><Link href="/locations" className={router.pathname == '/locations' ? 'active' : ''}>Locations</Link></li>
                         <li><Link href="#contact-us" className={router.hash == 'contact-us' ? 'active' : ''}>Contact us</Link></li>
                         <li>
-                        <input type="checkbox" name="lightMode" id="lightMode" onChange={(e) => toggleLightMode(e)}/>
+                        {/* <input type="checkbox" name="lightMode" id="lightMode" onChange={(e) => toggleLightMode(e)}/> */}
                         </li>
                     </ul>
-                    <Link href={`mailto:${email}`} target="_blank">
-                        <button>Book now</button>
+                    <Link href={`mailto:${email}?subject=Dive Rakiura - Website booking enquiry`} target="_blank" className="no-hover">
+                        <button class="small">Book now</button>
                     </Link>
                 </nav>
             </div>

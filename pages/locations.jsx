@@ -7,8 +7,8 @@ import React from 'react'
 import { Image } from '../components/Image';
 import { Layout } from '../components/Layout';
 
-export default function tours({ tours, siteSettings }) {
-    const data = tours[0];
+export default function tours({ locations, siteSettings }) {
+    const data = locations[0];
     console.log(data)
   return (
     <Layout siteSettings={siteSettings}>
@@ -21,9 +21,9 @@ export default function tours({ tours, siteSettings }) {
             <p className="small">{data.title}</p>
             <span></span>
         </nav>
-        <section className="gc  pd-top--m pd-bottom--l m-pd--0">
+        <section className="gc pd-top--m pd-bottom--l m-pd--0">
             {data.content ?
-                <div className="d-1-6 mg-left--l m-mg-left--0 m-1-13 flex flex-column gap--s m-pd--s m-pd-bottom--m">
+                <div className="d-2-6 m-1-13 flex flex-column gap--s m-pd--s m-pd-bottom--m">
                     {data.title ? 
                         <h1 className="small">{data.title}</h1>
                     : null}
@@ -50,8 +50,8 @@ export default function tours({ tours, siteSettings }) {
                 </div>
             :''}
         </section>
-        <section className="gc  pd-top--m pd-bottom--l m-pd--0">
-            <div className="d-1-6 mg-left--l m-mg-left--0 m-1-13 flex flex-column gap--s m-pd--s m-pd-bottom--m">
+        <section className="gc pd-top--m pd-bottom--l m-pd--0">
+            <div className="d-2-6 m-1-13 flex flex-column gap--s m-pd--s m-pd-bottom--m">
                 {data.sTwoTitle ? 
                     <h2 className="small">{data.sTwoTitle}</h2>
                 : null}
@@ -65,8 +65,8 @@ export default function tours({ tours, siteSettings }) {
                 </div>
             :''}
         </section>
-        <section className="gc  pd-top--m pd-bottom--l m-pd--0">
-        <div className="d-1-6 mg-left--l m-mg-left--0 m-1-13 flex flex-column gap--s m-pd--s m-pd-bottom--m">
+        <section className="gc pd-top--m pd-bottom--l m-pd--0">
+        <div className="d-2-6 m-1-13 flex flex-column gap--s m-pd--s m-pd-bottom--m">
                 {data.sThreeTitle ? 
                     <h2 className="small">{data.sThreeTitle}</h2>
                 : null}
@@ -74,11 +74,6 @@ export default function tours({ tours, siteSettings }) {
                     value={data.sThreeContent}
                 />
             </div>
-            {data.sThreeImage ?
-                <div className="d-7-13 m-1-13 m-r-1">
-                    <Image client={client} image={data.sThreeImage} ratio="1-1"  alt={data.sThreeImage.alt} />
-                </div>
-            :''}
         </section>
     </Layout>
   )
@@ -92,12 +87,12 @@ const client = createClient({
   });
   
   export async function getStaticProps() {
-    const tours = await client.fetch(`*[_type == "tours"]`);
+    const locations = await client.fetch(`*[_type == "locations"]`);
     const siteSettings = await client.fetch(`*[_type == "siteSettings"]`);
   
     return {
       props: {
-        tours,
+        locations,
         siteSettings
       }
     };

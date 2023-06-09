@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import 'swiper/css';
+import "swiper/css/effect-fade";
 
 import {PortableText} from '@portabletext/react'
 import Link from "next/link";
 import { createClient } from "next-sanity";
 import { useState } from "react";
-import { A11y,Navigation, Pagination, Scrollbar } from 'swiper';
+import { A11y,Autoplay, EffectFade,Navigation, Pagination, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Footer } from "../components/Footer";
@@ -25,12 +26,17 @@ export default function IndexPage({ home, siteSettings }) {
                 {data.imagesGallery ? 
                     <div className="d-1-13">
                             <Swiper
-                                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                                modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y, EffectFade]}
                                 navigation
                                 loop={true}
                                 pagination={{ clickable: true }}
                                 onSlideChange={() => console.log('slide change')}
                                 onSwiper={(swiper) => console.log(swiper)}
+                                effect={"fade"}
+                                autoplay={{
+                                    delay: 5000,
+                                    disableOnInteraction: false
+                                }}
                                 >
                                 {data.imagesGallery.map((img, i) => (
                                     <SwiperSlide key={i}>
@@ -50,7 +56,7 @@ export default function IndexPage({ home, siteSettings }) {
                     <a href="mailto:test@test.com"><button>Book Now</button></a>
                 </div>
                 {data.content ?
-                    <div className="meta d-2-6 m-1-13 flex flex-column gap--s m-pd--s m-pd-bottom--m">
+                    <div className="meta mg-left--l m-mg-left--0 d-1-6 m-1-13 flex flex-column gap--s m-pd--s m-pd-bottom--m">
                         {data.pageTitle ? 
                             <p className="tiny">{data.pageTitle}</p>
                         : null}
@@ -72,7 +78,7 @@ export default function IndexPage({ home, siteSettings }) {
             </section>
             {data.imageBlocks ? 
                 <section class="gc pd-top--m m-pd-top--s pd-bottom--l">
-                    <div className="meta d-2-6 m-1-13 flex flex-column gap--s m-pd-x--s m-pd-bottom--m">
+                    <div className="meta mg-left--l m-mg-left--0 d-1-6 m-1-13 flex flex-column gap--s m-pd-x--s m-pd-bottom--m">
                     {data.secondaryTitle ? 
                             <p className="tiny">{data.secondaryTitle}</p>
                         : null}

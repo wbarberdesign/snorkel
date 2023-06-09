@@ -70,13 +70,15 @@ header {
     background: var(--primary-fade);
     width: 100%;
     z-index: 50;
-    a:hover {
-        opacity: 0.8;
-    }
     @include mobileOnly {
         svg {
             height: 2rem;
             width: auto;
+        }
+    }
+    .main-menu a {
+        &:hover {
+            opacity: 0.75;
         }
     }
 }
@@ -142,6 +144,12 @@ button {
             background: var(--secondary);
             color: var(--primary);
         }
+    }
+    &.small {
+        font-size: 1.2rem;
+        width: fit-content;
+        min-width: unset;
+        padding: 0 2rem;
     }
 }
 
