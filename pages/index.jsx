@@ -53,7 +53,7 @@ export default function IndexPage({ home, siteSettings }) {
                 : ''}
                 <div className="d-4-10 m-1-13 pd-top--m pd-bottom--l m-pd-bottom--m flex flex-column flex-center flex-middle gap--m">
                     <h1 className="text--center">{data.title}</h1>
-                    <a href="mailto:test@test.com"><button>Book Now</button></a>
+                    <a href={`mailto:${siteSettings[0].email}?subject=Dive Rakiura - Website booking enquiry`}><button>Book Now</button></a>
                 </div>
                 {data.content ?
                     <div className="meta mg-left--l m-mg-left--0 d-1-6 m-1-13 flex flex-column gap--s m-pd--s m-pd-bottom--m">

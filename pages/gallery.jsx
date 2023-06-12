@@ -1,7 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import "yet-another-react-lightbox/styles.css";
+
 import { useRouter } from 'next/router'
 import { createClient } from "next-sanity";
 import { useEffect,useState } from "react";
+import Lightbox from "yet-another-react-lightbox";
 
 import { Footer } from "../components/Footer";
 import { GalleryFilter } from "../components/GalleryFilter";
@@ -9,11 +12,22 @@ import { Header } from "../components/Header";
 import { Image } from "../components/Image";
 import { Layout } from "../components/Layout";
 
+import { useNextSanityImage, getImageAttributes } from "next-sanity-image";
+
+import NextJsImage from "../components/NextJsImage";
+
 export default function GalleryPage({ gallery, siteSettings }) {
     if(!gallery) {return(<></>)}
     const data = gallery[0];
     const [activeFilter, setActiveFilter] = useState('all');
+    const [index, setIndex] = useState(-1);
     const router = useRouter()
+    
+    const slides = data.galleryBlocks.map((block, i) => {
+        const imgProps = useNextSanityImage(client, block.image);
+        console.log(imgProps);
+        return imgProps;
+      });
 
     useEffect(() => {
         if(router.query?.filter) {
@@ -25,12 +39,10 @@ export default function GalleryPage({ gallery, siteSettings }) {
     
 
     const updateFilter = (e) => {
-        console.log(e);
         router.push({ pathname: 'gallery', query: { filter: e } });
         setActiveFilter(e)
     }
 
-    console.log(data);
     if(!data) { return(<></>)}
     let results = 0;
     return (
@@ -46,10 +58,23 @@ export default function GalleryPage({ gallery, siteSettings }) {
                         data.galleryBlocks.map((block, i) => (
                             activeFilter == 'all' || activeFilter == block.type ?
                                 ((results++),
-                                <Image image={block.image} client={client} ratio="16-9" alt={block.image.caption} />)
+                                <Image 
+                                    image={block.image} 
+                                    client={client} 
+                                    ratio="16-9" 
+                                    index={i}
+                                    setIndex={(e) => setIndex(e)}
+                                    alt={block.image.caption} />)
                             : null
                         ))
                     : null}
+                        <Lightbox
+                            open={index >= 0}
+                            index={index}
+                            close={() => setIndex(-1)}
+                            slides={slides}
+                            // render={{ slide: NextJsImage }}
+                        />
                     {results == 0 ? <p className="flex flex-column gap--s">Sorry, your search returned no results. <button className="btn-2" onClick={(e) => updateFilter('all')}>See all</button></p> : ''}
                 </div>
             </section>

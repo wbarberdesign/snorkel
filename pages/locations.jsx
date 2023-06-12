@@ -65,16 +65,18 @@ export default function tours({ locations, siteSettings }) {
                 </div>
             :''}
         </section>
-        <section className="gc pd-top--m pd-bottom--l m-pd--0">
-        <div className="d-2-6 m-1-13 flex flex-column gap--s m-pd--s m-pd-bottom--m">
-                {data.sThreeTitle ? 
-                    <h2 className="small">{data.sThreeTitle}</h2>
-                : null}
-                <PortableText
-                    value={data.sThreeContent}
-                />
-            </div>
-        </section>
+        {data.sThreeTitle ? 
+            <section className="gc pd-top--m pd-bottom--l m-pd--0">
+                <div className="d-2-6 m-1-13 flex flex-column gap--s m-pd--s m-pd-bottom--m">
+                    {data.sThreeTitle ? 
+                        <h2 className="small">{data.sThreeTitle}</h2>
+                    : null}
+                    <PortableText
+                        value={data.sThreeContent}
+                    />
+                </div>
+            </section>
+        : null}
     </Layout>
   )
 }
