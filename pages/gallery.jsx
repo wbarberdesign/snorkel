@@ -1,19 +1,20 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/captions.css";
 
+import Img from 'next/image';
 import { useRouter } from 'next/router'
 import { createClient } from "next-sanity";
+import { getImageAttributes,useNextSanityImage } from "next-sanity-image";
 import { useEffect,useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
+import Captions from "yet-another-react-lightbox/plugins/captions";
 
 import { Footer } from "../components/Footer";
 import { GalleryFilter } from "../components/GalleryFilter";
 import { Header } from "../components/Header";
 import { Image } from "../components/Image";
 import { Layout } from "../components/Layout";
-
-import { useNextSanityImage, getImageAttributes } from "next-sanity-image";
-
 import NextJsImage from "../components/NextJsImage";
 
 export default function GalleryPage({ gallery, siteSettings }) {
@@ -23,10 +24,19 @@ export default function GalleryPage({ gallery, siteSettings }) {
     const [index, setIndex] = useState(-1);
     const router = useRouter()
     
+    const myCustomImageBuilder = (imageUrlBuilder, options) => {
+        return imageUrlBuilder
+            .width(options.width || Math.min(options.originalImageDimensions.width, 2000))
+    };
+
     const slides = data.galleryBlocks.map((block, i) => {
-        const imgProps = useNextSanityImage(client, block.image);
-        console.log(imgProps);
-        return imgProps;
+        // const imgProps = useNextSanityImage(client, block.image);
+        const imgProps = useNextSanityImage(client, block.image, {
+            imageBuilder: myCustomImageBuilder
+        });
+
+        imgProps.title = block.caption
+        return  imgProps;
       });
 
     useEffect(() => {
@@ -59,6 +69,7 @@ export default function GalleryPage({ gallery, siteSettings }) {
                             activeFilter == 'all' || activeFilter == block.type ?
                                 ((results++),
                                 <Image 
+                                    classes="pointer"
                                     image={block.image} 
                                     client={client} 
                                     ratio="16-9" 
@@ -69,11 +80,12 @@ export default function GalleryPage({ gallery, siteSettings }) {
                         ))
                     : null}
                         <Lightbox
+                            plugins={[Captions]}
                             open={index >= 0}
                             index={index}
                             close={() => setIndex(-1)}
                             slides={slides}
-                            // render={{ slide: NextJsImage }}
+                            // render={{ slide: Image }}
                         />
                     {results == 0 ? <p className="flex flex-column gap--s">Sorry, your search returned no results. <button className="btn-2" onClick={(e) => updateFilter('all')}>See all</button></p> : ''}
                 </div>
