@@ -1,32 +1,48 @@
 .swiper-button-prev, .swiper-button-next {
     position: absolute;
-    top: calc(50% - 0.5rem);
-    height: 1rem;
+    top: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 1rem;
     z-index: 2000;
     cursor: pointer;
+    padding: 0 8rem;
     @include transition(.3s ease-out);
     &:hover {
         @include scale(1.5, 1.5);
     }
+    &:after {
+        font-size: 2rem;
+    }
 }
 .swiper-button-prev {
-    left: 8rem;
+    left: 0;
     &:after {
         content: '<';
         display: block;
     }
+    @include mobileOnly {
+        padding: 0 2rem;
+    }
 }
 .swiper-button-next {
-    right: 8rem;
+    right: 0;
     &:after {
         content: '>';
         display: block;
+    }
+    @include mobileOnly {
+        padding: 0 2rem;
     }
 }
 
 .swiper-slide {
     cursor: grab;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
     &:focus {
         cursor: grabbing;
     }

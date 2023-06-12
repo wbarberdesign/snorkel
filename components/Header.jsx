@@ -66,6 +66,13 @@ export const Header = ({toggleLightMode, email}) => {
                             <li><Link href="/gallery?filter=reef-life">Reef life</Link></li>
                         </ul>
                     </div>
+                    <div className="flex flex-column gap--s">
+                        <p>Locations</p>
+                        <ul>
+                            <li><Link href="/locations">Fin-fish</Link></li>
+                            <li><Link href="/locations">Reef life</Link></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             </div>
