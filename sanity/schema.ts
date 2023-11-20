@@ -362,7 +362,54 @@ export const schema: { types: SchemaTypeDefinition[] } = {
                             ]
                           },
                     ]
-                    },
+                },
+                {
+                    title: "Blog",
+                    name: "blog",
+                    type: "document",
+                    fields: [
+                        {
+                            title: "Publication Date",
+                            name: "publicationDate",
+                            type: "datetime", // Use the datetime type for date input
+                            options: {
+                                dateFormat: "YYYY-MM-DD", // Customize the date format if needed
+                                timeFormat: "HH:mm", // Optionally include time format
+                                timeStep: 15, // Optionally set the time step
+                            },
+                        },
+                        {
+                            title: "Title",
+                            name: "title",
+                            type: "string",
+                        },
+                        {
+                            title: 'Slug',
+                            name: 'slug',
+                            type: 'slug',
+                            options: {
+                              source: 'title',
+                              maxLength: 200, // will be ignored if slugify is set
+                              slugify: input => input
+                                                   .toLowerCase()
+                                                   .replace(/\s+/g, '-')
+                                                   .slice(0, 200)
+                            }
+                          },
+                          {
+                            title: 'Content', 
+                            name: 'content',
+                            type: 'array', 
+                            of: [{type: 'block'}]
+                        },
+                        {
+                            name: 'galleryBlocks',
+                            type: 'array',
+                            title: 'Gallery Blocks',
+                            of: [{ type: 'galleryBlock' }],
+                        }
+                    ],
+                },       
           imageBlock, tourDetails, galleryBlock
       ],
 }
