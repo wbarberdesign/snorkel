@@ -31,6 +31,16 @@ export const schema: { types: SchemaTypeDefinition[] } = {
                 name: "facebook",
                 type: "url"
               },
+              {
+                title: "Meta Title",
+                name: "metaTitle",
+                type: "string"
+              },
+              {
+                title: "Meta Description",
+                name: "metaDescription",
+                type: "string"
+              },
             ],
           },
         {

@@ -56,7 +56,7 @@ export default function GalleryPage({ gallery, siteSettings }) {
     if(!data) { return(<></>)}
     let results = 0;
     return (
-        <Layout siteSettings={siteSettings}>
+        <Layout siteSettings={siteSettings} pageTitle="Gallery">
             <section className="gc full-height">
                 <div className="d-1-13 pd--s pd-x--l pd-bottom--m m-pd-x--s pd-top--m flex gap--s flex-column">
                     <h1 className="small">Gallery</h1>

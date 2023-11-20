@@ -9,10 +9,9 @@ import { Layout } from '../components/Layout';
 
 export default function tours({ tours, siteSettings }) {
     const data = tours[0];
-    console.log(data)
   return (
-    <Layout siteSettings={siteSettings}>
-        <nav class="flex flex-middle flex-s-between mobile-only pd-y--xs pd-x--s">
+    <Layout siteSettings={siteSettings} pageTitle="Tours">
+        <nav className="flex flex-middle flex-s-between mobile-only pd-y--xs pd-x--s">
             <Link href="/">
                 <svg width="5" height="9" viewBox="0 0 5 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.70001 0.848015L1.31601 4.17202L4.68801 7.47202L3.99201 8.18002L0.0320129 4.17202L4.00401 0.140015L4.70001 0.848015Z" fill="white"/>

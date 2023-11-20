@@ -9,19 +9,16 @@ import { useState } from "react";
 import { A11y,Autoplay, EffectFade,Navigation, Pagination, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { Footer } from "../components/Footer";
-import { Header } from "../components/Header";
 import { Image } from "../components/Image";
 import { Layout } from "../components/Layout";
 
 export default function IndexPage({ home, siteSettings }) {
     const data = home[0];
     const [lightMode, toggleLightMode] = useState(false)
-    console.log(data);
     if(!data) { return(<></>)}
 
     return (
-        <Layout siteSettings={siteSettings}>
+        <Layout siteSettings={siteSettings} pageTitle="Home">
             <section className="gc full-height pd-bottom--l m-pd-bottom--0">
                 {data.imagesGallery ? 
                     <div className="d-1-13">
@@ -30,8 +27,6 @@ export default function IndexPage({ home, siteSettings }) {
                                 navigation
                                 loop={true}
                                 pagination={{ clickable: true }}
-                                onSlideChange={() => console.log('slide change')}
-                                onSwiper={(swiper) => console.log(swiper)}
                                 effect={"fade"}
                                 autoplay={{
                                     delay: 5000,
@@ -77,7 +72,7 @@ export default function IndexPage({ home, siteSettings }) {
                 :''}
             </section>
             {data.imageBlocks ? 
-                <section class="gc pd-top--m m-pd-top--s pd-bottom--l">
+                <section className="gc pd-top--m m-pd-top--s pd-bottom--l">
                     <div className="meta mg-left--l m-mg-left--0 d-1-6 m-1-13 flex flex-column gap--s m-pd-x--s m-pd-bottom--m">
                     {data.secondaryTitle ? 
                             <p className="tiny">{data.secondaryTitle}</p>
@@ -123,4 +118,4 @@ const client = createClient({
       }
     };
   }
-  
+

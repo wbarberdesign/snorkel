@@ -5,7 +5,6 @@ import React from "react"
 export const NextJsImage = ({ client, image, ratio, priority, setIndex, index }) => {
   const imgProps = useNextSanityImage(client, image);
   const { src, srcSet, sizes } = getImageAttributes(imgProps);
-  console.log(imgProps);
   let classNames = 'image-container';
   if (ratio) {
     classNames += ' ratio-' + ratio;
