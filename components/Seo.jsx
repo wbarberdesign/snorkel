@@ -9,7 +9,7 @@ export const SEO = ({siteSettings, pageTitle}) => {
         </title>
         <meta
         name="description"
-        content={siteSettings.metaDescription}
+        content={siteSettings[0].metaDescription}
         key="desc"
         />
         <link rel="icon" href="/favicon.png" sizes="any" />
