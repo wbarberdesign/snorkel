@@ -143,9 +143,7 @@ export const Header = ({ toggleLightMode, email }) => {
               </li>
             </ul>
             <Link
-              href={`mailto:${email}?subject=Dive Rakiura - Website booking enquiry`}
-              target="_blank"
-              className="no-hover"
+              href={`https://fareharbor.com/embeds/book/diverakiura/?full-items=yes%22%3EBook`}
             >
               <button className="small">Book now</button>
             </Link>
