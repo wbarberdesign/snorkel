@@ -4,6 +4,7 @@ import { isRecord, isString, useClient } from 'sanity'
 import { UserViewComponent } from 'sanity/desk'
 import styled from 'styled-components'
 import { suspend } from 'suspend-react'
+import { SanityClient } from 'next-sanity'
 
 import { apiVersion, previewSecretDocumentId } from '../env'
 import { getPreviewSecret } from '../lib/previewSecret'
@@ -59,7 +60,7 @@ function PagePreviewWithSecret(props: {
   const secret = suspend(
     () =>
       getPreviewSecret({
-        client,
+        client: client as unknown as SanityClient,
         id: previewSecretDocumentId,
         createIfNotExists: true,
       }),
