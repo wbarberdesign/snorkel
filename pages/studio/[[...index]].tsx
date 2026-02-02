@@ -3,7 +3,6 @@ import { NextStudio } from 'next-sanity/studio'
 import { NextStudioHead } from 'next-sanity/studio/head'
 import { StudioLayout, StudioProvider } from 'sanity'
 import config from 'sanity.config'
-import { createGlobalStyle } from 'styled-components'
 
 export default function StudioPage() {
   return (

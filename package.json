@@ -27,7 +27,7 @@
     "react-dom": "^18.2.0",
     "sanity": "^3.1.4",
     "sanity-plugin-vercel-deploy": "^3.3.4",
-    "styled-components": "^5.3.6",
+    "styled-components": "^6.1.13",
     "swiper": "^9.3.2",
     "yet-another-react-lightbox": "^3.11.0"
   },
@@ -46,6 +46,6 @@
     "typescript": "^5.3.3"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=24.13.0"
   }
 }
