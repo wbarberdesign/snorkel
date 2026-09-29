@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://diverakiura.co.nz/</loc>
+        <loc>https://www.stewartislandsnorkel.co.nz/</loc>
     </url>
     <url>
-        <loc>https://diverakiura.co.nz/tours</loc>
+        <loc>https://www.stewartislandsnorkel.co.nz/tours</loc>
     </url>
     <url>
-        <loc>https://diverakiura.co.nz/gallery</loc>
+        <loc>https://www.stewartislandsnorkel.co.nz/gallery</loc>
     </url>
     <url>
-        <loc>https://diverakiura.co.nz/locations</loc>
+        <loc>https://www.stewartislandsnorkel.co.nz/locations</loc>
+    </url>
+    <url>
+        <loc>https://www.stewartislandsnorkel.co.nz/blog</loc>
     </url>
 </urlset>
