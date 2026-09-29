@@ -7,10 +7,19 @@ export const Header = ({ toggleLightMode, email }) => {
   const [menuOpen, toggleMenuOpen] = useState(false)
   return (
     <>
-      <header className="pd-x--l gc relative">
-        <div className="d-1-6 r-1 m-1-13 h-100 m-flex-center flex-middle flex">
+      <header className="site-header pd-x--l relative">
+        <div className="site-header__brand m-1-13 h-100 m-flex-center flex-middle flex">
           <Link href="/">
-          <svg width="174" height="45" viewBox="0 0 174 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <span className="visually-hidden">Home page</span>
+          <svg
+            width="174"
+            height="45"
+            viewBox="0 0 174 45"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            focusable="false"
+          >
             <path d="M140.186 34.98H142.886V25.92H140.186V24.9H144.086V34.98H146.786V36H140.186V34.98Z" fill="white"/>
             <path d="M134.626 36.18C134.066 36.18 133.561 36.085 133.111 35.895C132.671 35.705 132.291 35.435 131.971 35.085C131.661 34.725 131.421 34.3 131.251 33.81C131.081 33.31 130.996 32.755 130.996 32.145C130.996 31.525 131.081 30.965 131.251 30.465C131.431 29.965 131.676 29.54 131.986 29.19C132.296 28.83 132.666 28.555 133.096 28.365C133.536 28.175 134.021 28.08 134.551 28.08C135.071 28.08 135.541 28.175 135.961 28.365C136.391 28.555 136.756 28.82 137.056 29.16C137.356 29.49 137.586 29.885 137.746 30.345C137.906 30.805 137.986 31.31 137.986 31.86V32.43H132.256V32.79C132.256 33.13 132.311 33.445 132.421 33.735C132.531 34.025 132.686 34.275 132.886 34.485C133.096 34.695 133.346 34.86 133.636 34.98C133.936 35.09 134.266 35.145 134.626 35.145C135.146 35.145 135.596 35.025 135.976 34.785C136.356 34.545 136.646 34.215 136.846 33.795L137.731 34.395C137.501 34.915 137.116 35.345 136.576 35.685C136.046 36.015 135.396 36.18 134.626 36.18ZM134.551 29.07C134.221 29.07 133.916 29.13 133.636 29.25C133.356 29.37 133.111 29.535 132.901 29.745C132.701 29.955 132.541 30.205 132.421 30.495C132.311 30.775 132.256 31.085 132.256 31.425V31.53H136.696V31.365C136.696 31.025 136.641 30.715 136.531 30.435C136.431 30.155 136.286 29.915 136.096 29.715C135.916 29.505 135.691 29.345 135.421 29.235C135.161 29.125 134.871 29.07 134.551 29.07Z" fill="white"/>
             <path d="M122.572 24.9H123.772V31.905H123.832L125.182 30.63L127.762 28.26H129.232L126.022 31.29L129.607 36H128.122L125.107 31.98L123.772 33.195V36H122.572V24.9Z" fill="white"/>
@@ -41,8 +50,8 @@ export const Header = ({ toggleLightMode, email }) => {
 
           </Link>
         </div>
-        <div className="d-7-13 m-1-13 tablet-plus r-1">
-          <nav className="flex-middle flex-to-right flex-s-between h-100 flex">
+        <div className="site-header__nav tablet-plus">
+          <nav className="site-header__nav-inner flex-middle h-100 flex">
             <ul className="main-menu flex-r m-flex-column flex-middle gap--s flex">
               <li>
                 <Link
@@ -66,6 +75,19 @@ export const Header = ({ toggleLightMode, email }) => {
                   className={router.pathname == '/locations' ? 'active' : ''}
                 >
                   Locations
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#featured-google-reviews"
+                  className={
+                    router.pathname === '/' &&
+                    router.asPath.includes('featured-google-reviews')
+                      ? 'active'
+                      : ''
+                  }
+                >
+                  Reviews
                 </Link>
               </li>
               <li>
@@ -145,6 +167,14 @@ export const Header = ({ toggleLightMode, email }) => {
                 <ul>
                   <li>
                     <Link href="/blog">All blog posts</Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="flex-column gap--s flex">
+                <p>Reviews</p>
+                <ul>
+                  <li>
+                    <Link href="/#featured-google-reviews">Google reviews</Link>
                   </li>
                 </ul>
               </div>

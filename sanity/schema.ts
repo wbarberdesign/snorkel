@@ -1,5 +1,6 @@
 import { SchemaTypeDefinition } from 'sanity'
 
+import { featuredGoogleReview } from './components/featuredGoogleReview';
 import { galleryBlock } from './components/galleryBlocks';
 import { imageBlock } from './components/ImageBlocks';
 import { tourDetails } from './components/tourDetails';
@@ -30,6 +31,13 @@ export const schema: { types: SchemaTypeDefinition[] } = {
                 title: "Facebook",
                 name: "facebook",
                 type: "url"
+              },
+              {
+                title: "Google Reviews listing URL",
+                name: "googleReviewsUrl",
+                type: "url",
+                description:
+                  "Google Maps or Business Profile link for “See all reviews”",
               },
               {
                 title: "Meta Title",
@@ -126,6 +134,19 @@ export const schema: { types: SchemaTypeDefinition[] } = {
                 type: 'array',
                 title: 'Image Blocks',
                 of: [{ type: 'imageBlock' }],
+              },
+              {
+                title: 'Google Maps listing URL',
+                name: 'googleReviewsListingUrl',
+                type: 'url',
+                description:
+                  'Link to your Google Business / Maps listing (for “See all reviews”). Paste the share link from Google Maps.',
+              },
+              {
+                name: 'featuredGoogleReviews',
+                type: 'array',
+                title: 'Featured Google reviews',
+                of: [{ type: 'featuredGoogleReview' }],
               },
             ],
           },
@@ -410,6 +431,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
                         }
                     ],
                 },       
-          imageBlock, tourDetails, galleryBlock
+          imageBlock,
+          tourDetails,
+          galleryBlock,
+          featuredGoogleReview,
       ],
 }

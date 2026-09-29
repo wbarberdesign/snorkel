@@ -10,6 +10,7 @@
 @import '_aspectRatios.scss';
 @import '_helpers.scss';
 @import 'swipers.scss';
+@import '_google-reviews.scss';
 @import '_responsive.scss';
 
 @font-face {
@@ -80,6 +81,36 @@ header {
         &:hover {
             opacity: 0.75;
         }
+    }
+}
+
+header.site-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-sizing: border-box;
+
+    .site-header__brand {
+        flex: 0 0 auto;
+    }
+
+    .site-header__nav {
+        flex: 0 1 auto;
+        margin-left: auto;
+        height: 100%;
+        overflow: visible;
+    }
+
+    .site-header__nav-inner {
+        justify-content: flex-start;
+        gap: $spacingSmall;
+        min-width: min-content;
+    }
+
+    .main-menu {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        white-space: nowrap;
     }
 }
 

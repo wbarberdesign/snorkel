@@ -16,11 +16,13 @@ import {
 } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import { FeaturedGoogleReviews } from '../components/FeaturedGoogleReviews'
 import { Image } from '../components/Image'
 import { Layout } from '../components/Layout'
 
 export default function IndexPage({ home, siteSettings }) {
   const data = home[0]
+  const global = siteSettings?.[0]
   const [lightMode, toggleLightMode] = useState(false)
   if (!data) {
     return <></>
@@ -124,6 +126,13 @@ export default function IndexPage({ home, siteSettings }) {
           </div>
         </section>
       ) : null}
+      <FeaturedGoogleReviews
+        client={client}
+        reviews={data.featuredGoogleReviews}
+        listingUrl={
+          data.googleReviewsListingUrl || global?.googleReviewsUrl
+        }
+      />
     </Layout>
   )
 }
